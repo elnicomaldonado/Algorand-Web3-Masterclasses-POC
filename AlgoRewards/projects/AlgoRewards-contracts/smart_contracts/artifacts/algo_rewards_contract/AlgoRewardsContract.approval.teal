@@ -1,0 +1,373 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 1
+    bytecblock 0x151f7c75 " (" ") for " " with metadata: "
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@12
+    pushbytess 0x8630a158 0x3472e806 0x15175ddc 0x281c98dd 0x02bece11 0xc552c5f5 0x07c031c7 // method "create_session(string,string,string,string)string", method "claim_badge(string,string,string,string,string)string", method "get_session_info(string)string", method "check_claim_status(string,string)uint64", method "hello(string)string", method "mint_nft(string,string,string,string)string", method "prepare_nft_creation(string,string,string)string"
+    txna ApplicationArgs 0
+    match main_create_session_route@3 main_claim_badge_route@4 main_get_session_info_route@5 main_check_claim_status_route@6 main_hello_route@7 main_mint_nft_route@8 main_prepare_nft_creation_route@9
+
+main_after_if_else@16:
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    pushint 0 // 0
+    return
+
+main_prepare_nft_creation_route@9:
+    // smart_contracts/algo_rewards_contract/contract.py:42
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    extract 2 0
+    txna ApplicationArgs 3
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:42
+    // @abimethod()
+    callsub prepare_nft_creation
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_mint_nft_route@8:
+    // smart_contracts/algo_rewards_contract/contract.py:36
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    extract 2 0
+    txna ApplicationArgs 3
+    extract 2 0
+    txna ApplicationArgs 4
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:36
+    // @abimethod()
+    callsub mint_nft
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_hello_route@7:
+    // smart_contracts/algo_rewards_contract/contract.py:31
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:31
+    // @abimethod()
+    callsub hello
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_check_claim_status_route@6:
+    // smart_contracts/algo_rewards_contract/contract.py:25
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    pushbytes 0x151f7c750000000000000000
+    log
+    intc_0 // 1
+    return
+
+main_get_session_info_route@5:
+    // smart_contracts/algo_rewards_contract/contract.py:20
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:20
+    // @abimethod()
+    callsub get_session_info
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_claim_badge_route@4:
+    // smart_contracts/algo_rewards_contract/contract.py:14
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    extract 2 0
+    txna ApplicationArgs 3
+    extract 2 0
+    txna ApplicationArgs 4
+    extract 2 0
+    txna ApplicationArgs 5
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:14
+    // @abimethod()
+    callsub claim_badge
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_create_session_route@3:
+    // smart_contracts/algo_rewards_contract/contract.py:8
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    extract 2 0
+    txna ApplicationArgs 3
+    extract 2 0
+    txna ApplicationArgs 4
+    extract 2 0
+    // smart_contracts/algo_rewards_contract/contract.py:8
+    // @abimethod()
+    callsub create_session
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_bare_routing@12:
+    // smart_contracts/algo_rewards_contract/contract.py:5
+    // class AlgoRewardsContract(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@16
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.create_session(session_id: bytes, session_name: bytes, session_description: bytes, metadata_url: bytes) -> bytes:
+create_session:
+    // smart_contracts/algo_rewards_contract/contract.py:8-9
+    // @abimethod()
+    // def create_session(self, session_id: String, session_name: String, session_description: String, metadata_url: String) -> String:
+    proto 4 1
+    // smart_contracts/algo_rewards_contract/contract.py:11-12
+    // # Return enhanced message with session details
+    // return "Phase4 Session created: " + session_name + " (ID: " + session_id + ", Metadata: " + metadata_url + ")"
+    pushbytes "Phase4 Session created: "
+    frame_dig -3
+    concat
+    pushbytes " (ID: "
+    concat
+    frame_dig -4
+    concat
+    pushbytes ", Metadata: "
+    concat
+    frame_dig -1
+    concat
+    pushbytes ")"
+    concat
+    retsub
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.claim_badge(session_id: bytes, recipient_address: bytes, asset_name: bytes, asset_unit: bytes, metadata_url: bytes) -> bytes:
+claim_badge:
+    // smart_contracts/algo_rewards_contract/contract.py:14-15
+    // @abimethod()
+    // def claim_badge(self, session_id: String, recipient_address: String, asset_name: String, asset_unit: String, metadata_url: String) -> String:
+    proto 5 1
+    // smart_contracts/algo_rewards_contract/contract.py:17-18
+    // # Return enhanced message with NFT creation details
+    // return "Phase4 NFT Badge created: " + asset_name + " (" + asset_unit + ") for " + recipient_address + " with metadata: " + metadata_url + " - READY FOR REAL NFT MINTING"
+    pushbytes "Phase4 NFT Badge created: "
+    frame_dig -3
+    concat
+    bytec_1 // " ("
+    concat
+    frame_dig -2
+    concat
+    bytec_2 // ") for "
+    concat
+    frame_dig -4
+    concat
+    bytec_3 // " with metadata: "
+    concat
+    frame_dig -1
+    concat
+    pushbytes " - READY FOR REAL NFT MINTING"
+    concat
+    retsub
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.get_session_info(session_id: bytes) -> bytes:
+get_session_info:
+    // smart_contracts/algo_rewards_contract/contract.py:20-21
+    // @abimethod()
+    // def get_session_info(self, session_id: String) -> String:
+    proto 1 1
+    // smart_contracts/algo_rewards_contract/contract.py:23
+    // return "Phase4 Session info for: " + session_id
+    pushbytes "Phase4 Session info for: "
+    frame_dig -1
+    concat
+    retsub
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.hello(name: bytes) -> bytes:
+hello:
+    // smart_contracts/algo_rewards_contract/contract.py:31-32
+    // @abimethod()
+    // def hello(self, name: String) -> String:
+    proto 1 1
+    // smart_contracts/algo_rewards_contract/contract.py:34
+    // return "Hello, " + name + " - Phase 4 AlgoRewards with Enhanced Features"
+    pushbytes "Hello, "
+    frame_dig -1
+    concat
+    pushbytes " - Phase 4 AlgoRewards with Enhanced Features"
+    concat
+    retsub
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.mint_nft(asset_name: bytes, asset_unit: bytes, metadata_url: bytes, recipient_address: bytes) -> bytes:
+mint_nft:
+    // smart_contracts/algo_rewards_contract/contract.py:36-37
+    // @abimethod()
+    // def mint_nft(self, asset_name: String, asset_unit: String, metadata_url: String, recipient_address: String) -> String:
+    proto 4 1
+    // smart_contracts/algo_rewards_contract/contract.py:39-40
+    // # This method prepares the contract for real NFT creation
+    // return "Phase4 NFT Prepared: " + asset_name + " (" + asset_unit + ") for " + recipient_address + " with metadata: " + metadata_url + " - CONTRACT READY FOR REAL NFT MINTING"
+    pushbytes "Phase4 NFT Prepared: "
+    frame_dig -4
+    concat
+    bytec_1 // " ("
+    concat
+    frame_dig -3
+    concat
+    bytec_2 // ") for "
+    concat
+    frame_dig -1
+    concat
+    bytec_3 // " with metadata: "
+    concat
+    frame_dig -2
+    concat
+    pushbytes " - CONTRACT READY FOR REAL NFT MINTING"
+    concat
+    retsub
+
+
+// smart_contracts.algo_rewards_contract.contract.AlgoRewardsContract.prepare_nft_creation(asset_name: bytes, asset_unit: bytes, metadata_url: bytes) -> bytes:
+prepare_nft_creation:
+    // smart_contracts/algo_rewards_contract/contract.py:42-43
+    // @abimethod()
+    // def prepare_nft_creation(self, asset_name: String, asset_unit: String, metadata_url: String) -> String:
+    proto 3 1
+    // smart_contracts/algo_rewards_contract/contract.py:45
+    // return "NFT Creation Parameters: Name=" + asset_name + ", Unit=" + asset_unit + ", Metadata=" + metadata_url + " - READY FOR ASSET CREATION"
+    pushbytes "NFT Creation Parameters: Name="
+    frame_dig -3
+    concat
+    pushbytes ", Unit="
+    concat
+    frame_dig -2
+    concat
+    pushbytes ", Metadata="
+    concat
+    frame_dig -1
+    concat
+    pushbytes " - READY FOR ASSET CREATION"
+    concat
+    retsub
